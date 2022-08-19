@@ -4,13 +4,11 @@
 function solve01(x) {
   console.log(x * 2);
 }
-solve01(2);
 
 //02. Student Information
 function solve02(name, age, grade) {
   console.log(`Name: ${name}, Age: ${age}, Grade: ${grade.toFixed(2)}`);
 }
-solve02("John", 15, 5.54678);
 
 //03. Excellent grade
 function solve03(grade) {
@@ -20,7 +18,6 @@ function solve03(grade) {
     console.log("Not excellent");
   }
 }
-solve03(5.5);
 
 //04. Foreign Languages
 function solve04(country) {
@@ -36,7 +33,6 @@ function solve04(country) {
     console.log("unknown");
   }
 }
-solve04("USA");
 
 // 05. Month Printer
 function solve05(number) {
@@ -68,7 +64,6 @@ function solve05(number) {
     console.log("Error!");
   }
 }
-solve05("February");
 
 //06. Theatre Promotions
 function solve06(day, age) {
@@ -83,7 +78,6 @@ function solve06(day, age) {
   else if (day === "Holiday" && age > 64 && age <= 122) console.log("10$");
   else console.log("Error!");
 }
-solve06("Weekday", 42);
 
 //07. Numbers from 1 to 5
 function solve07() {
@@ -91,7 +85,6 @@ function solve07() {
     console.log(i + 1);
   }
 }
-solve07();
 
 //08. Divisible by 3
 function solve08() {
@@ -99,7 +92,6 @@ function solve08() {
     if (i % 3 == 0) console.log(i);
   }
 }
-solve08();
 
 //09. Numbers from N to 1
 function solve09(num) {
@@ -107,7 +99,6 @@ function solve09(num) {
     console.log(i);
   }
 }
-solve09(6);
 
 //10. Numbers from M to N
 function solve10(mNumber, nNumber) {
@@ -115,7 +106,6 @@ function solve10(mNumber, nNumber) {
     console.log(i);
   }
 }
-solve10(7, 1);
 
 //11. Sum of Odd Numbers
 function solve11(num) {
