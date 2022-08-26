@@ -93,6 +93,30 @@ function solve07(arr) {
 }
 
 //08. Array Manipulations
-function solve08(arr) {
+function solve08(input) {
+  let arr = input.shift().split(" ").map(Number);
 
-solve07(["Potatoes", "Tomatoes", "Onions", "Apples"]);
+  for (let i = 0; i < input.length; i++) {
+    let currentCommand = input[i].split(" ")[0];
+    let number = Number(input[i].split(" ")[1]);
+    let index = Number(input[i].split(" ")[2]);
+    switch (currentCommand) {
+      case "Add":
+        arr.push(number);
+        break;
+      case "Remove":
+        arr = arr.filter((el) => el !== number);
+        break;
+      case "RemoveAt":
+        arr.splice(number, 1);
+        break;
+      case "Insert":
+        arr.splice(index, 0, number);
+        break;
+    }
+  }
+  console.log(arr.join(" "));
+}
+
+// solve08(["6 12 2 65 6 42", "Add 8", "Remove 12", "RemoveAt 3", "Insert 6 2"]);
+solve08(["4 19 2 53 6 43", "Add 3", "Remove 2", "RemoveAt 1", "Insert 8 3"]);
