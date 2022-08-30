@@ -180,4 +180,55 @@ function solveE08(arr, manipulations) {
     }
   }
 }
-solveE08([2, 2, 4, 2, 4], ["add 1 4", "sumPairs", "print"]);
+
+//09*. Gladiator Inventory
+
+function solveE09(input) {
+  let inventory = input.shift().split(" ");
+  for (let i = 0; i < input.length; i++) {
+    let currentInput = input[i].split(" ");
+    let command = currentInput.shift();
+
+    switch (command) {
+      case "Buy":
+        let buyEquipment = currentInput[0];
+        if (!inventory.includes(buyEquipment)) {
+          inventory.push(buyEquipment);
+        }
+        break;
+      case "Trash":
+        let trashEquipment = currentInput[0];
+        if (inventory.includes(trashEquipment)) {
+          let deleteIndex = inventory.indexOf(trashEquipment);
+          inventory.splice(deleteIndex, 1);
+        }
+        break;
+      case "Repair":
+        let repairEquipment = currentInput[0];
+        if (inventory.includes(repairEquipment)) {
+          let repairIndex = inventory.indexOf(repairEquipment);
+          inventory.splice(repairIndex, 1);
+          inventory.push(repairEquipment);
+        }
+        break;
+      case "Upgrade":
+        let firstEquipment = currentInput[0].split("-")[0];
+        let secondEquipment = currentInput[0].split("-")[1];
+
+        if (inventory.includes(firstEquipment)) {
+          let updateIndex = inventory.indexOf(firstEquipment) + 1;
+          let newEquipment = firstEquipment + ":" + secondEquipment;
+          inventory.splice(updateIndex, 0, newEquipment);
+        }
+        break;
+    }
+  }
+  console.log(inventory.join(" "));
+}
+
+solveE09([
+  "SWORD Shield Spear",
+  "Trash Bow",
+  "Repair Shield",
+  "Upgrade Helmet-V",
+]);
