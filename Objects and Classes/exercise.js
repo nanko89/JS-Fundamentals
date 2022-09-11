@@ -122,9 +122,79 @@ function solveE04(input) {
 }
 
 //05. Inventory
-function solveE05() {}
-solveE04([
-  "Isacc / 25 / Apple, GravityGun",
-  "Derek / 12 / BarrelVest, DestructionSword",
-  "Hes / 1 / Desolator, Sentinel, Antara",
-]);
+function solveE05(input) {
+  let heroes = [];
+  for (const item of input) {
+    let heroInfo = item.split(" / ");
+    let curentHero = {};
+    curentHero.name = heroInfo[0];
+    curentHero.level = heroInfo[1];
+    curentHero.items = heroInfo[2];
+    heroes.push(curentHero);
+  }
+  heroes.sort((h1, h2) => h1.level - h2.level);
+
+  heroes.forEach((hero) =>
+    console.log(`Hero: ${hero.name}
+level => ${hero.level}
+items => ${hero.items}`)
+  );
+}
+
+//06. Make a Dictionary
+function solveE06(input) {
+  class Word {
+    constructor(termin, definitionW) {
+      this.termin = termin;
+      this.definitionW = definitionW;
+    }
+  }
+  let dictionary = [];
+  let terms = [];
+  for (const item of input) {
+    let currentWord = JSON.parse(item);
+    let term = Object.keys(currentWord)[0];
+    let definition = Object.values(currentWord)[0];
+    if (!terms.includes(term)) {
+      let word = new Word(term, definition);
+      terms.push(term);
+      dictionary.push(word);
+    } else {
+      for (let word of dictionary) {
+        if (word.hasOwnProperty(term)) {
+          word.definitionW(definition);
+        }
+      }
+    }
+  }
+
+  dictionary.sort((w1, w2) => w1.termin.localeCompare(w2.termin));
+  dictionary.forEach((word) =>
+    console.log(`Term: ${word.termin} => Definition: ${word.definitionW}`)
+  );
+}
+
+//07. Class Vehicle
+
+function solveE07() {
+  class Vehicle {
+    constructor(type, model, parts, fuel) {
+      this.type = type;
+      this.model = model;
+      this.parts = parts;
+      this.fuel = fuel;
+      this.parts.quality = this.parts.engine * this.parts.power;
+    }
+
+    drive(lostFuel) {
+      return (this.fuel -= lostFuel);
+    }
+  }
+
+  let parts = { engine: 6, power: 100 };
+  let vehicle = new Vehicle("a", "b", parts, 200);
+  vehicle.drive(100);
+  console.log(vehicle.fuel);
+  console.log(vehicle.parts.quality);
+}
+solveE07();
