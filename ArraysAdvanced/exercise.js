@@ -226,9 +226,29 @@ function solveE09(input) {
   console.log(inventory.join(" "));
 }
 
-solveE09([
-  "SWORD Shield Spear",
-  "Trash Bow",
-  "Repair Shield",
-  "Upgrade Helmet-V",
-]);
+//10. Build a Wall
+function solveE10(input) {
+  let isFinish = false;
+  let workinCrewInDays = [];
+  let totalYard = 0;
+
+  while (!isFinish) {
+    let total = 0;
+    for (let day = 0; day < input.length; day++) {
+      if (input[day] < 30) {
+        input[day]++;
+        total += 195;
+      }
+    }
+    if (total === 0) {
+      isFinish = true;
+      break;
+    }
+    workinCrewInDays.push(total);
+    totalYard += total;
+  }
+  console.log(workinCrewInDays.join(", "));
+  console.log(totalYard * 1900 + " pesos");
+}
+
+solveE10([17]);
